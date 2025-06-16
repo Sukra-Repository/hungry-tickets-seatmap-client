@@ -1,7 +1,7 @@
 {
   "name": "@sukra-infotek/hungry-tickets-seatmap-client",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.0.2",
   "publishConfig": {
     "access": "public"
   },
@@ -18,17 +18,23 @@
   "repository": "https://github.com/Sukra-Repository/hungry-tickets-seatmap-client",
   "license": "MIT",
   "type": "module",
-  "main": "./cjs/index.js",
+  "main": "./cjs/index.cjs",
   "module": "./esm/index.mjs",
-  "types": "./cjs/index.d.ts",
+  "types": "./cjs/index.d.cts",
   "sideEffects": false,
   "files": [
     "cjs",
-    "esm"
+    "esm",
+    "dist"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "vite-build": "vite build",
+    "build": "pnpm build:cjs && pnpm build:esm && pnpm vite-build",
+    "build:cjs": "dotenv -v NODE_ENV=production -- tsup --config ./tsup.config.cjs.ts",
+    "build:esm": "dotenv -v NODE_ENV=production -- tsup --config ./tsup.config.esm.ts",
+    "build:umd-minimal": "dotenv -v NODE_ENV=production -v INCLUDE_DEPENDENCIES=false -- tsup --config ./tsup.config.umd.ts",
+    "build:umd-standalone": "dotenv -v NODE_ENV=production -v INCLUDE_DEPENDENCIES=true -- tsup --config ./tsup.config.umd.ts",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -54,6 +60,7 @@
     "@types/react-dom": "^19.1.2",
     "@types/umd": "^3.0.4",
     "@vitejs/plugin-react": "^4.4.1",
+    "dotenv-cli": "^8.0.0",
     "eslint": "^9.25.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
@@ -63,6 +70,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "rollup-plugin-inject": "^3.0.2",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.5.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.30.1",
     "umd": "^3.0.3",

@@ -1,7 +1,20 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  "compilerOptions": {
+    "outDir": "build",
+    "esModuleInterop": true,
+    "module": "esNext",
+    "target": "esnext",
+    "noEmit": true,
+    "strict": true,
+    "allowJs": true,
+    "noImplicitReturns": true,
+    "skipLibCheck": true,
+    "noUncheckedIndexedAccess": false,
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "lib": ["esnext", "dom", "es2017.object"],
+    "baseUrl": ".",
+    "resolveJsonModule": true
+  },
+  "include": ["src", "*.ts", "dev.tsx"]
 }
