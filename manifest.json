@@ -1,0 +1,439 @@
+{
+      "sections": {
+        "Diamond Club": {
+          "zone_name": "Zone A"
+        },
+        "Dugout Box 118": {
+          "zone_name": "Zone B"
+        },
+        "Dugout Box 119": {
+          "zone_name": "Zone B"
+        },
+        "Dugout Box 120": {
+          "zone_name": "Zone B"
+        },
+        "Insperity Club": {
+          "zone_name": "Zone B"
+        },
+        "Club I 217": {
+          "zone_name": "Zone C"
+        },
+        "Club I 218": {
+          "zone_name": "Zone C"
+        },
+        "Club I 219": {
+          "zone_name": "Zone C"
+        },
+        "Club I 220": {
+          "zone_name": "Zone C"
+        },
+        "Club I 221": {
+          "zone_name": "Zone C"
+        },
+        "Dugout Box 112": {
+          "zone_name": "Zone C"
+        },
+        "Dugout Box 113": {
+          "zone_name": "Zone C"
+        },
+        "Dugout Box 114": {
+          "zone_name": "Zone C"
+        },
+        "Dugout Box 116": {
+          "zone_name": "Zone C"
+        },
+        "Dugout Box 122": {
+          "zone_name": "Zone C"
+        },
+        "Dugout Box 124": {
+          "zone_name": "Zone C"
+        },
+        "Dugout Box 125": {
+          "zone_name": "Zone C"
+        },
+        "Dugout Box 126": {
+          "zone_name": "Zone C"
+        },
+        "Club I 211": {
+          "zone_name": "Zone D"
+        },
+        "Club I 212": {
+          "zone_name": "Zone D"
+        },
+        "Club I 213": {
+          "zone_name": "Zone D"
+        },
+        "Club I 214": {
+          "zone_name": "Zone D"
+        },
+        "Club I 215": {
+          "zone_name": "Zone D"
+        },
+        "Club I 216": {
+          "zone_name": "Zone D"
+        },
+        "Club I 222": {
+          "zone_name": "Zone D"
+        },
+        "Club I 223": {
+          "zone_name": "Zone D"
+        },
+        "Club I 224": {
+          "zone_name": "Zone D"
+        },
+        "Club I 225": {
+          "zone_name": "Zone D"
+        },
+        "Club I 226": {
+          "zone_name": "Zone D"
+        },
+        "Club I 227": {
+          "zone_name": "Zone D"
+        },
+        "Club I 228": {
+          "zone_name": "Zone D"
+        },
+        "Bullpen Box 150": {
+          "zone_name": "Zone E"
+        },
+        "Bullpen Box 151": {
+          "zone_name": "Zone E"
+        },
+        "Bullpen Box 152": {
+          "zone_name": "Zone E"
+        },
+        "Bullpen Box 153": {
+          "zone_name": "Zone E"
+        },
+        "Bullpen Box 154": {
+          "zone_name": "Zone E"
+        },
+        "Bullpen Box 155": {
+          "zone_name": "Zone E"
+        },
+        "Bullpen Box 156": {
+          "zone_name": "Zone E"
+        },
+        "Club Ii 205": {
+          "zone_name": "Zone E"
+        },
+        "Club Ii 206": {
+          "zone_name": "Zone E"
+        },
+        "Club Ii 207": {
+          "zone_name": "Zone E"
+        },
+        "Club Ii 208": {
+          "zone_name": "Zone E"
+        },
+        "Club Ii 209": {
+          "zone_name": "Zone E"
+        },
+        "Club Ii 210": {
+          "zone_name": "Zone E"
+        },
+        "Club Ii 229": {
+          "zone_name": "Zone E"
+        },
+        "Club Ii 230": {
+          "zone_name": "Zone E"
+        },
+        "Club Ii 231": {
+          "zone_name": "Zone E"
+        },
+        "Club Ii 232": {
+          "zone_name": "Zone E"
+        },
+        "Crawford Box 100": {
+          "zone_name": "Zone E"
+        },
+        "Crawford Box 101": {
+          "zone_name": "Zone E"
+        },
+        "Crawford Box 102": {
+          "zone_name": "Zone E"
+        },
+        "Crawford Box 103": {
+          "zone_name": "Zone E"
+        },
+        "Crawford Box 104": {
+          "zone_name": "Zone E"
+        },
+        "Field Box 105": {
+          "zone_name": "Zone E"
+        },
+        "Field Box 106": {
+          "zone_name": "Zone E"
+        },
+        "Field Box 107": {
+          "zone_name": "Zone E"
+        },
+        "Field Box 108": {
+          "zone_name": "Zone E"
+        },
+        "Field Box 109": {
+          "zone_name": "Zone E"
+        },
+        "Field Box 110": {
+          "zone_name": "Zone E"
+        },
+        "Field Box 111": {
+          "zone_name": "Zone E"
+        },
+        "Field Box 127": {
+          "zone_name": "Zone E"
+        },
+        "Field Box 128": {
+          "zone_name": "Zone E"
+        },
+        "Field Box 129": {
+          "zone_name": "Zone E"
+        },
+        "Field Box 131": {
+          "zone_name": "Zone E"
+        },
+        "Field Box 132": {
+          "zone_name": "Zone E"
+        },
+        "Field Box 133": {
+          "zone_name": "Zone E"
+        },
+        "Field Box 134": {
+          "zone_name": "Zone E"
+        },
+        "Power Club 233": {
+          "zone_name": "Zone E"
+        },
+        "Power Club 234": {
+          "zone_name": "Zone E"
+        },
+        "Power Club 235": {
+          "zone_name": "Zone E"
+        },
+        "Power Club 236": {
+          "zone_name": "Zone E"
+        },
+        "Terrace Deck 311": {
+          "zone_name": "Zone F"
+        },
+        "Terrace Deck 313": {
+          "zone_name": "Zone F"
+        },
+        "Terrace Deck 314": {
+          "zone_name": "Zone F"
+        },
+        "Terrace Deck 315": {
+          "zone_name": "Zone F"
+        },
+        "Terrace Deck 316": {
+          "zone_name": "Zone F"
+        },
+        "Terrace Deck 322": {
+          "zone_name": "Zone F"
+        },
+        "Terrace Deck 323": {
+          "zone_name": "Zone F"
+        },
+        "Terrace Deck 324": {
+          "zone_name": "Zone F"
+        },
+        "Terrace Deck 325": {
+          "zone_name": "Zone F"
+        },
+        "Terrace Deck 326": {
+          "zone_name": "Zone F"
+        },
+        "Terrace Deck 327": {
+          "zone_name": "Zone F"
+        },
+        "Terrace Deck 328": {
+          "zone_name": "Zone F"
+        },
+        "View Deck I 413": {
+          "zone_name": "Zone F"
+        },
+        "View Deck I 414": {
+          "zone_name": "Zone F"
+        },
+        "View Deck I 415": {
+          "zone_name": "Zone F"
+        },
+        "View Deck I 416": {
+          "zone_name": "Zone F"
+        },
+        "View Deck I 417": {
+          "zone_name": "Zone F"
+        },
+        "View Deck I 418": {
+          "zone_name": "Zone F"
+        },
+        "View Deck I 419": {
+          "zone_name": "Zone F"
+        },
+        "View Deck I 420": {
+          "zone_name": "Zone F"
+        },
+        "View Deck I 421": {
+          "zone_name": "Zone F"
+        },
+        "View Deck I 422": {
+          "zone_name": "Zone F"
+        },
+        "View Deck I 423": {
+          "zone_name": "Zone F"
+        },
+        "View Deck I 424": {
+          "zone_name": "Zone F"
+        },
+        "View Deck I 425": {
+          "zone_name": "Zone F"
+        },
+        "Terrace Deck 305": {
+          "zone_name": "Zone G"
+        },
+        "Terrace Deck 306": {
+          "zone_name": "Zone G"
+        },
+        "Terrace Deck 307": {
+          "zone_name": "Zone G"
+        },
+        "Terrace Deck 309": {
+          "zone_name": "Zone G"
+        },
+        "Terrace Deck 310": {
+          "zone_name": "Zone G"
+        },
+        "Terrace Deck 317": {
+          "zone_name": "Zone G"
+        },
+        "Terrace Deck 318": {
+          "zone_name": "Zone G"
+        },
+        "Terrace Deck 319": {
+          "zone_name": "Zone G"
+        },
+        "Terrace Deck 320": {
+          "zone_name": "Zone G"
+        },
+        "Terrace Deck 321": {
+          "zone_name": "Zone G"
+        },
+        "Terrace Deck 329": {
+          "zone_name": "Zone G"
+        },
+        "Terrace Deck 330": {
+          "zone_name": "Zone G"
+        },
+        "Terrace Deck 331": {
+          "zone_name": "Zone G"
+        },
+        "Terrace Deck 332": {
+          "zone_name": "Zone G"
+        },
+        "Terrace Deck 333": {
+          "zone_name": "Zone G"
+        },
+        "Terrace Deck 334": {
+          "zone_name": "Zone G"
+        },
+        "View Deck Ii 409": {
+          "zone_name": "Zone G"
+        },
+        "View Deck Ii 410": {
+          "zone_name": "Zone G"
+        },
+        "View Deck Ii 411": {
+          "zone_name": "Zone G"
+        },
+        "View Deck Ii 427": {
+          "zone_name": "Zone G"
+        },
+        "View Deck Ii 428": {
+          "zone_name": "Zone G"
+        },
+        "View Deck Ii 429": {
+          "zone_name": "Zone G"
+        },
+        "View Deck Ii 430": {
+          "zone_name": "Zone G"
+        },
+        "View Deck Ii 431": {
+          "zone_name": "Zone G"
+        },
+        "Mezzanine 250": {
+          "zone_name": "Zone H"
+        },
+        "Mezzanine 251": {
+          "zone_name": "Zone H"
+        },
+        "Mezzanine 252": {
+          "zone_name": "Zone H"
+        },
+        "Mezzanine 253": {
+          "zone_name": "Zone H"
+        },
+        "Mezzanine 254": {
+          "zone_name": "Zone H"
+        },
+        "Mezzanine 255": {
+          "zone_name": "Zone H"
+        },
+        "Outfield Deck 407": {
+          "zone_name": "Zone H"
+        },
+        "Outfield Deck 408": {
+          "zone_name": "Zone H"
+        },
+        "Outfield Deck 432": {
+          "zone_name": "Zone H"
+        },
+        "Outfield Deck 433": {
+          "zone_name": "Zone H"
+        },
+        "Outfield Deck 434": {
+          "zone_name": "Zone H"
+        },
+        "Outfield Deck Ii 405": {
+          "zone_name": "Zone H"
+        },
+        "Outfield Deck Ii 406": {
+          "zone_name": "Zone H"
+        },
+        "9 Amigos Center Field Patio": {
+          "zone_name": "9 Amigos Center Field Patio"
+        },
+        "Coke Corner": {
+          "zone_name": "Coke Corner"
+        },
+        "Executive Suites": {
+          "zone_name": "Executive Suites"
+        },
+        "Mezzanine 256": {
+          "zone_name": "Mezzanine"
+        },
+        "Mezzanine 257": {
+          "zone_name": "Mezzanine"
+        },
+        "Mezzanine 258": {
+          "zone_name": "Mezzanine"
+        },
+        "Outfield Deck Ii 436": {
+          "zone_name": "Outfield Deck Ii"
+        },
+        "Outfield Deck Ii 437": {
+          "zone_name": "Outfield Deck Ii"
+        },
+        "Outfield Deck Ii 438": {
+          "zone_name": "Outfield Deck Ii"
+        },
+        "Terrace Deck 336": {
+          "zone_name": "Terrace Deck"
+        },
+        "Terrace Deck 337": {
+          "zone_name": "Terrace Deck"
+        },
+        "Terrace Deck 338": {
+          "zone_name": "Terrace Deck"
+        }
+      }
+    }
