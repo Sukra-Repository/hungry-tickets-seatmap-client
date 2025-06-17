@@ -156,17 +156,17 @@ export default class Tooltip extends Component<Props & DefaultProps> {
         <div style={this.contentStyle()}>
           <div style={this.nameStyle()}>
             <div style={this.swatchStyle()} />
-            Zone: {this.props.zone}
-            {" ● "}
             Section: {this.props.name}
+            {", "}
+            Zone: {this.props.zone}
           </div>
           <br></br>
           {prices[0] > 0.0 &&
             <div>
-              {this.props.ticketGroups.length} offer
+              {/* {this.props.ticketGroups.length} offer
               {prices.length !== 1 ? "s" : ""}
-              {" ● "}
-              Best Offer{" "}
+              {" ● "} */}
+              Best Offer Price{" "}
               <span style={this.priceStyle()}>{formatCurrency(prices[prices.length - 1])}</span>
             </div>
           }

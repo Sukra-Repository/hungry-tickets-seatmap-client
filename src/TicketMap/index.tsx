@@ -284,7 +284,7 @@ export class TicketMap extends Component<Props & DefaultProps, State> {
 
   unhighlightSection = (section?: string) => {
     if (!section) {
-      return this.setState({ currentHoveredSection: undefined });
+      return this.setState({ currentHoveredSection: undefined, currentHoveredZone: undefined });
     }
     return this.toggleSectionHighlight(section, false);
   };
@@ -532,11 +532,15 @@ export class TicketMap extends Component<Props & DefaultProps, State> {
     this.setState({ dragging: true });
   };
 
+  getZoneNameFromSection(section: string): string {
+    return this.state.manifest.sections[section]?.zone_name ?? '';
+  }
+
   onTouchEnd = (e: React.TouchEvent<HTMLElement>) => {
     const section = this.state.currentHoveredSection;
     if (section) {
       this.doSelect(section);
-      this.setState({ currentHoveredSection: undefined });
+      this.setState({ currentHoveredSection: undefined, currentHoveredZone: undefined });
     }
     if (this.state.dragging) {
       e.preventDefault();
@@ -566,6 +570,7 @@ export class TicketMap extends Component<Props & DefaultProps, State> {
       tooltipSectionName: this.state.sectionMapping[section].sectionName,
       tooltipZoneName: this.state.manifest.sections[section].zone_name,
       currentHoveredSection: section,
+      currentHoveredZone: this.getZoneNameFromSection(section)
     });
   }
 
@@ -586,6 +591,7 @@ export class TicketMap extends Component<Props & DefaultProps, State> {
     this.setState({
       tooltipActive: false,
       currentHoveredSection: undefined,
+      currentHoveredZone: undefined,
     });
   }
 
@@ -693,8 +699,7 @@ export class TicketMap extends Component<Props & DefaultProps, State> {
                 : ""
             }
             ticketGroups={$availableTicketGroups(this.state).filter(
-              (ticketGroup) =>
-                ticketGroup.tevo_section_name === this.state.currentHoveredSection,
+              (ticketGroup) => ticketGroup.zone_name === this.state.currentHoveredZone,
             )}
           />
         )}

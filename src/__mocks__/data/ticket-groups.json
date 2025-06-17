@@ -4,7 +4,17 @@
         "row": "Terrace Deck",
         "zone_name": "Terrace Deck",
         "tevo_section_name": "Terrace Deck 336",
-        "retail_price": 26.632897805129492,
+        "retail_price": 35,
+        "wholesale_price": 26.632897805129492,
+        "color": "#570380",
+        "description": "Bien vien en dormant"
+      },
+            {
+        "id": 1660,
+        "row": "Terrace Deck",
+        "zone_name": "Terrace Deck",
+        "tevo_section_name": "Terrace Deck 336",
+        "retail_price": 26,
         "wholesale_price": 26.632897805129492,
         "color": "#570380",
         "description": "Bien vien en dormant"
@@ -15,6 +25,28 @@
         "zone_name": "Terrace Deck",
         "tevo_section_name": "Terrace Deck 337",
         "retail_price": 26.632897805129492,
+        "wholesale_price": 26.632897805129492,
+        "color": "#570380",
+                "description": "Bien vien en dormant"
+
+      },
+            {
+        "id": 1660,
+        "row": "Terrace Deck",
+        "zone_name": "Terrace Deck",
+        "tevo_section_name": "Terrace Deck 337",
+        "retail_price": 24.632897805129492,
+        "wholesale_price": 26.632897805129492,
+        "color": "#570380",
+                "description": "Bien vien en dormant"
+
+      },
+            {
+        "id": 1660,
+        "row": "Terrace Deck",
+        "zone_name": "Terrace Deck",
+        "tevo_section_name": "Terrace Deck 337",
+        "retail_price": 29.632897805129492,
         "wholesale_price": 26.632897805129492,
         "color": "#570380",
                 "description": "Bien vien en dormant"

@@ -49,6 +49,7 @@ export interface State {
   ticketGroups: TicketGroup[];
   selectedSections: Set<string>;
   currentHoveredSection?: string;
+  currentHoveredZone?: string;
   tooltipActive: boolean;
   tooltipSectionName: string;
   tooltipZoneName: string;
