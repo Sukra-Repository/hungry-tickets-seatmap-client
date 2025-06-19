@@ -96,7 +96,9 @@ var _Legend = class _Legend extends Component {
           backgroundColor: "white",
           right: -2,
           border: "2px solid lightgray",
-          borderRadius: "0 0 5px 5px"
+          borderRadius: "0 0 5px 5px",
+          maxHeight: "400px",
+          overflowY: "auto"
         },
         children: [
           /* @__PURE__ */ jsx("h3", { style: { padding: "0 0 0 8px", textAlign: "left" }, children: "Map Legend" }),
@@ -425,19 +427,15 @@ var _Tooltip = class _Tooltip extends Component {
         children: /* @__PURE__ */ jsxs("div", { style: this.contentStyle(), children: [
           /* @__PURE__ */ jsxs("div", { style: this.nameStyle(), children: [
             /* @__PURE__ */ jsx("div", { style: this.swatchStyle() }),
-            "Zone: ",
-            this.props.zone,
-            " \u25CF ",
             "Section: ",
-            this.props.name
+            this.props.name,
+            ", ",
+            "Zone: ",
+            this.props.zone
           ] }),
           /* @__PURE__ */ jsx("br", {}),
           prices[0] > 0 && /* @__PURE__ */ jsxs("div", { children: [
-            this.props.ticketGroups.length,
-            " offer",
-            prices.length !== 1 ? "s" : "",
-            " \u25CF ",
-            "Best Offer",
+            "Best Offer Price",
             " ",
             /* @__PURE__ */ jsx("span", { style: this.priceStyle(), children: formatCurrency(prices[prices.length - 1]) })
           ] }),
@@ -979,7 +977,7 @@ var _TicketMap = class _TicketMap extends Component {
     __publicField(this, "highlightSection", /* @__PURE__ */ __name((section) => this.toggleSectionHighlight(section, true), "highlightSection"));
     __publicField(this, "unhighlightSection", /* @__PURE__ */ __name((section) => {
       if (!section) {
-        return this.setState({ currentHoveredSection: void 0 });
+        return this.setState({ currentHoveredSection: void 0, currentHoveredZone: void 0 });
       }
       return this.toggleSectionHighlight(section, false);
     }, "unhighlightSection"));
@@ -1126,7 +1124,7 @@ var _TicketMap = class _TicketMap extends Component {
       const section = this.state.currentHoveredSection;
       if (section) {
         this.doSelect(section);
-        this.setState({ currentHoveredSection: void 0 });
+        this.setState({ currentHoveredSection: void 0, currentHoveredZone: void 0 });
       }
       if (this.state.dragging) {
         e.preventDefault();
@@ -1346,6 +1344,9 @@ var _TicketMap = class _TicketMap extends Component {
   getDefaultColor(ticketGroups = []) {
     return ticketGroups[0].color;
   }
+  getZoneNameFromSection(section) {
+    return this.state.manifest.sections[section]?.zone_name ?? "";
+  }
   /**
    * Interactions
    */
@@ -1364,7 +1365,8 @@ var _TicketMap = class _TicketMap extends Component {
       tooltipY: tooltipY !== void 0 ? tooltipY : 0,
       tooltipSectionName: this.state.sectionMapping[section].sectionName,
       tooltipZoneName: this.state.manifest.sections[section].zone_name,
-      currentHoveredSection: section
+      currentHoveredSection: section,
+      currentHoveredZone: this.getZoneNameFromSection(section)
     });
   }
   doHoverCleanup(enteringElement) {
@@ -1379,7 +1381,8 @@ var _TicketMap = class _TicketMap extends Component {
     }
     this.setState({
       tooltipActive: false,
-      currentHoveredSection: void 0
+      currentHoveredSection: void 0,
+      currentHoveredZone: void 0
     });
   }
   // TBD
@@ -1447,7 +1450,7 @@ var _TicketMap = class _TicketMap extends Component {
         style: {
           position: "relative",
           fontFamily: this.props.mapFontFamily,
-          height: "100%",
+          height: "95%",
           width: "100%",
           pointerEvents: this.props.mouseControlEnabled ? "initial" : "none"
         },
@@ -1464,7 +1467,7 @@ var _TicketMap = class _TicketMap extends Component {
                 $ticketGroupsBySection(this.state)[this.state.currentHoveredSection]
               ) : "",
               ticketGroups: $availableTicketGroups(this.state).filter(
-                (ticketGroup) => ticketGroup.tevo_section_name === this.state.currentHoveredSection
+                (ticketGroup) => ticketGroup.zone_name === this.state.currentHoveredZone
               )
             }
           ),

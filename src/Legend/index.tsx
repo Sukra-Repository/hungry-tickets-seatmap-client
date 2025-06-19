@@ -52,6 +52,8 @@ export default class Legend extends Component<Props, State> {
             right: -2,
             border: "2px solid lightgray",
             borderRadius: "0 0 5px 5px",
+            maxHeight: "400px",
+            overflowY: "auto",
           }}
         >
           <h3 style={{ padding: "0 0 0 8px", textAlign: "left" }}>

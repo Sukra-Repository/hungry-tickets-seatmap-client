@@ -58,6 +58,7 @@ interface State {
     ticketGroups: TicketGroup[];
     selectedSections: Set<string>;
     currentHoveredSection?: string;
+    currentHoveredZone?: string;
     tooltipActive: boolean;
     tooltipSectionName: string;
     tooltipZoneName: string;
@@ -147,6 +148,7 @@ declare class TicketMap extends Component<Props & DefaultProps, State> {
     onClick: () => void;
     onTouchStart: (e: React$1.TouchEvent<HTMLElement>) => void;
     onTouchMove: () => void;
+    getZoneNameFromSection(section: string): string;
     onTouchEnd: (e: React$1.TouchEvent<HTMLElement>) => void;
     /**
      * Interactions

@@ -677,7 +677,7 @@ export class TicketMap extends Component<Props & DefaultProps, State> {
         style={{
           position: "relative",
           fontFamily: this.props.mapFontFamily,
-          height: "100%",
+          height: "95%",
           width: "100%",
           pointerEvents: this.props.mouseControlEnabled ? "initial" : "none",
         }}
