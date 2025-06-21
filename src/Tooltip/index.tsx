@@ -124,13 +124,15 @@ export default class Tooltip extends Component<Props & DefaultProps> {
   contentStyle(): CSSProperties {
     return {
       backgroundColor: "white",
-      padding: 20,
+      padding: 8,
       borderRadius: 8,
+      fontSize: "12px",
     };
   }
 
   nameStyle(): CSSProperties {
     return {
+      fontSize: "12px",
       display: "flex",
       alignItems: "center",
     };
@@ -138,7 +140,8 @@ export default class Tooltip extends Component<Props & DefaultProps> {
 
   priceStyle(): CSSProperties {
     return {
-      fontWeight: 700,
+      fontWeight: 400,
+      fontSize: "12px"
     };
   }
 
@@ -156,18 +159,12 @@ export default class Tooltip extends Component<Props & DefaultProps> {
         <div style={this.contentStyle()}>
           <div style={this.nameStyle()}>
             <div style={this.swatchStyle()} />
-            Section: {this.props.name}
-            {", "}
-            Zone: {this.props.zone}
+            <strong>Section: </strong> &nbsp; {this.props.name}, &nbsp;
+            <strong>Zone: </strong> &nbsp; {this.props.zone}
           </div>
-          <br></br>
           {prices[0] > 0.0 &&
             <div>
-              {/* {this.props.ticketGroups.length} offer
-              {prices.length !== 1 ? "s" : ""}
-              {" ● "} */}
-              Best Offer Price{" "}
-              <span style={this.priceStyle()}>{formatCurrency(prices[prices.length - 1])}</span>
+              <strong>Best Offer Price</strong> &nbsp; {formatCurrency(prices[prices.length - 1])}
             </div>
           }
           {prices[0] === 0.0 &&
