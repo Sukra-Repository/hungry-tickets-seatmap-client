@@ -401,19 +401,22 @@ var _Tooltip = class _Tooltip extends Component {
   contentStyle() {
     return {
       backgroundColor: "white",
-      padding: 20,
-      borderRadius: 8
+      padding: 8,
+      borderRadius: 8,
+      fontSize: "12px"
     };
   }
   nameStyle() {
     return {
+      fontSize: "12px",
       display: "flex",
       alignItems: "center"
     };
   }
   priceStyle() {
     return {
-      fontWeight: 700
+      fontWeight: 400,
+      fontSize: "12px"
     };
   }
   render() {
@@ -427,17 +430,18 @@ var _Tooltip = class _Tooltip extends Component {
         children: /* @__PURE__ */ jsxs("div", { style: this.contentStyle(), children: [
           /* @__PURE__ */ jsxs("div", { style: this.nameStyle(), children: [
             /* @__PURE__ */ jsx("div", { style: this.swatchStyle() }),
-            "Section: ",
+            /* @__PURE__ */ jsx("strong", { children: "Section: " }),
+            " \xA0 ",
             this.props.name,
-            ", ",
-            "Zone: ",
+            ", \xA0",
+            /* @__PURE__ */ jsx("strong", { children: "Zone: " }),
+            " \xA0 ",
             this.props.zone
           ] }),
-          /* @__PURE__ */ jsx("br", {}),
           prices[0] > 0 && /* @__PURE__ */ jsxs("div", { children: [
-            "Best Offer Price",
-            " ",
-            /* @__PURE__ */ jsx("span", { style: this.priceStyle(), children: formatCurrency(prices[prices.length - 1]) })
+            /* @__PURE__ */ jsx("strong", { children: "Best Offer Price" }),
+            " \xA0 ",
+            formatCurrency(prices[prices.length - 1])
           ] }),
           prices[0] === 0 && /* @__PURE__ */ jsx("div", { children: "No offers yet. Be the first one to Name Your Price" })
         ] })
