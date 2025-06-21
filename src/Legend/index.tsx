@@ -79,7 +79,7 @@ export default class Legend extends Component<Props, State> {
 
     const content = (
       <div style={this.containerStyle()}>
-        <h3 style={{ margin: 0, marginBottom: 8 }}>Map Legend</h3>
+        <h3 style={{ margin: 0, marginBottom: 8, fontWeight: 700 }}>Map Legend</h3>
         {filteredTicketGroups.map((ticketGroup) => (
           <div key={ticketGroup.color} style={this.itemStyle()}>
             <Swatch color={ticketGroup.color} />

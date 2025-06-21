@@ -94,35 +94,52 @@ var _Legend = class _Legend extends React.Component {
       isOpen: this.props.openLegendInitially || false
     });
   }
+  containerStyle() {
+    return {
+      position: "absolute",
+      backgroundColor: "white",
+      right: -2,
+      border: "2px solid lightgray",
+      borderRadius: "0 0 5px 5px",
+      maxHeight: 400,
+      overflowY: "auto",
+      width: 300,
+      padding: 8,
+      zIndex: 1e3
+    };
+  }
+  itemStyle() {
+    return {
+      display: "flex",
+      alignItems: "flex-start",
+      gap: 8,
+      marginBottom: 8,
+      wordBreak: "break-word",
+      textAlign: "left"
+    };
+  }
+  textContainerStyle() {
+    return {
+      flex: 1,
+      whiteSpace: "normal",
+      overflowWrap: "break-word"
+    };
+  }
   render() {
     const { isOpen } = this.state;
     const { ticketGroups, isMobile, showLegendOpenAlwaysForDesktop } = this.props;
     const filteredTicketGroups = uniqueByZone(ticketGroups);
-    return showLegendOpenAlwaysForDesktop && !isMobile ? /* @__PURE__ */ jsxRuntime.jsx("div", { style: { position: "relative" }, children: /* @__PURE__ */ jsxRuntime.jsxs(
-      "div",
-      {
-        style: {
-          position: "absolute",
-          backgroundColor: "white",
-          right: -2,
-          border: "2px solid lightgray",
-          borderRadius: "0 0 5px 5px",
-          maxHeight: "400px",
-          overflowY: "auto"
-        },
-        children: [
-          /* @__PURE__ */ jsxRuntime.jsx("h3", { style: { padding: "0 0 0 8px", textAlign: "left" }, children: "Map Legend" }),
-          filteredTicketGroups.map((ticketGroup) => /* @__PURE__ */ jsxRuntime.jsxs("div", { style: { padding: 8, textAlign: "left" }, children: [
-            /* @__PURE__ */ jsxRuntime.jsx(swatch_default, { color: ticketGroup.color, style: { marginRight: 8 } }),
-            /* @__PURE__ */ jsxRuntime.jsxs("span", { children: [
-              ticketGroup.zone_name,
-              " - ",
-              ticketGroup.description
-            ] })
-          ] }, ticketGroup.color))
-        ]
-      }
-    ) }) : /* @__PURE__ */ jsxRuntime.jsxs("div", { style: { position: "relative" }, children: [
+    const content = /* @__PURE__ */ jsxRuntime.jsxs("div", { style: this.containerStyle(), children: [
+      /* @__PURE__ */ jsxRuntime.jsx("h3", { style: { margin: 0, marginBottom: 8, fontWeight: 700 }, children: "Map Legend" }),
+      filteredTicketGroups.map((ticketGroup) => /* @__PURE__ */ jsxRuntime.jsxs("div", { style: this.itemStyle(), children: [
+        /* @__PURE__ */ jsxRuntime.jsx(swatch_default, { color: ticketGroup.color }),
+        /* @__PURE__ */ jsxRuntime.jsxs("div", { style: this.textContainerStyle(), children: [
+          /* @__PURE__ */ jsxRuntime.jsx("strong", { children: ticketGroup.zone_name }),
+          ticketGroup.description && ` - ${ticketGroup.description}`
+        ] })
+      ] }, ticketGroup.color))
+    ] });
+    return showLegendOpenAlwaysForDesktop && !isMobile ? /* @__PURE__ */ jsxRuntime.jsx("div", { style: { position: "relative" }, children: content }) : /* @__PURE__ */ jsxRuntime.jsxs("div", { style: { position: "relative" }, children: [
       /* @__PURE__ */ jsxRuntime.jsx(
         Button,
         {
@@ -132,25 +149,7 @@ var _Legend = class _Legend extends React.Component {
           isMobile
         }
       ),
-      filteredTicketGroups.length > 0 && isOpen && /* @__PURE__ */ jsxRuntime.jsx(
-        "div",
-        {
-          style: {
-            position: "absolute",
-            backgroundColor: "white",
-            right: -2,
-            border: "2px solid lightgray",
-            borderRadius: "0 0 5px 5px"
-          },
-          children: filteredTicketGroups.map((ticketGroup) => /* @__PURE__ */ jsxRuntime.jsxs("div", { style: { padding: 8, textAlign: "left" }, children: [
-            /* @__PURE__ */ jsxRuntime.jsx(swatch_default, { color: ticketGroup.color, style: { marginRight: 8 } }),
-            /* @__PURE__ */ jsxRuntime.jsxs("span", { children: [
-              ticketGroup.zone_name,
-              ticketGroup.description && ` - ${ticketGroup.description}`
-            ] })
-          ] }, ticketGroup.color))
-        }
-      )
+      filteredTicketGroups.length > 0 && isOpen && content
     ] });
   }
 };
