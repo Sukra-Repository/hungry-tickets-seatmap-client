@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, CSSProperties } from "react";
 import Button from "./../Button";
 import Swatch from "./swatch";
 import { IconChevronDown } from "../icons/ChevronDown";
@@ -37,40 +37,63 @@ export default class Legend extends Component<Props, State> {
     isOpen: this.props.openLegendInitially || false,
   };
 
+  containerStyle(): CSSProperties {
+    return {
+      position: "absolute",
+      backgroundColor: "white",
+      right: -2,
+      border: "2px solid lightgray",
+      borderRadius: "0 0 5px 5px",
+      maxHeight: 400,
+      overflowY: "auto",
+      width: 300,
+      padding: 8,
+      zIndex: 1000,
+    };
+  }
+
+  itemStyle(): CSSProperties {
+    return {
+      display: "flex",
+      alignItems: "flex-start",
+      gap: 8,
+      marginBottom: 8,
+      wordBreak: "break-word",
+      textAlign: "left",
+    };
+  }
+
+  textContainerStyle(): CSSProperties {
+    return {
+      flex: 1,
+      whiteSpace: "normal",
+      overflowWrap: "break-word",
+    };
+  }
+
   render() {
     const { isOpen } = this.state;
     const { ticketGroups, isMobile, showLegendOpenAlwaysForDesktop } = this.props;
 
     const filteredTicketGroups = uniqueByZone(ticketGroups);
 
-    return showLegendOpenAlwaysForDesktop && !isMobile ? (
-      <div style={{ position: "relative" }}>
-        <div
-          style={{
-            position: "absolute",
-            backgroundColor: "white",
-            right: -2,
-            border: "2px solid lightgray",
-            borderRadius: "0 0 5px 5px",
-            maxHeight: "400px",
-            overflowY: "auto",
-          }}
-        >
-          <h3 style={{ padding: "0 0 0 8px", textAlign: "left" }}>
-            Map Legend
-          </h3>
-          {filteredTicketGroups.map((ticketGroup) => (
-            <div key={ticketGroup.color} style={{ padding: 8, textAlign: "left" }}>
-              <Swatch color={ticketGroup.color} style={{ marginRight: 8 }} />
-              <span>
-                {ticketGroup.zone_name}
-                {" - "}
-                {ticketGroup.description}
-              </span>
+    const content = (
+      <div style={this.containerStyle()}>
+        <h3 style={{ margin: 0, marginBottom: 8 }}>Map Legend</h3>
+        {filteredTicketGroups.map((ticketGroup) => (
+          <div key={ticketGroup.color} style={this.itemStyle()}>
+            <Swatch color={ticketGroup.color} />
+            <div style={this.textContainerStyle()}>
+              <strong>{ticketGroup.zone_name}</strong>
+              {ticketGroup.description && ` - ${ticketGroup.description}`}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
+    );
+
+    return showLegendOpenAlwaysForDesktop && !isMobile ? (
+      <div style={{ position: "relative" }}>{content}</div>
     ) : (
       <div style={{ position: "relative" }}>
         <Button
@@ -79,27 +102,7 @@ export default class Legend extends Component<Props, State> {
           text={`${isOpen ? "Hide " : "Show "}Map Legend`}
           isMobile={isMobile}
         />
-        {filteredTicketGroups.length > 0 && isOpen && (
-          <div
-            style={{
-              position: "absolute",
-              backgroundColor: "white",
-              right: -2,
-              border: "2px solid lightgray",
-              borderRadius: "0 0 5px 5px",
-            }}
-          >
-            {filteredTicketGroups.map((ticketGroup) => (
-            <div key={ticketGroup.color} style={{ padding: 8, textAlign: "left" }}>
-              <Swatch color={ticketGroup.color} style={{ marginRight: 8 }} />
-              <span>
-                {ticketGroup.zone_name}
-                {ticketGroup.description && ` - ${ticketGroup.description}`}
-              </span>
-            </div>
-            ))}
-          </div>
-        )}
+        {filteredTicketGroups.length > 0 && isOpen && content}
       </div>
     );
   }
