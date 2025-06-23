@@ -3,7 +3,7 @@ import type { TicketGroup } from "../types/TicketGroups";
 
 export const defaultDirection = ["up", "right"];
 
-export const formatCurrency = new Intl.NumberFormat(undefined, {
+export const formatCurrency = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
 }).format;
@@ -162,16 +162,15 @@ export default class Tooltip extends Component<Props & DefaultProps> {
             <strong>Section: </strong> &nbsp; {this.props.name}, &nbsp;
             <strong>Zone: </strong> &nbsp; {this.props.zone}
           </div>
-          {prices[0] > 0.0 &&
-            <div>
-              <strong>Best Offer Price</strong> &nbsp; {formatCurrency(prices[prices.length - 1])}
-            </div>
-          }
-          {prices[0] === 0.0 &&
+          {prices[prices.length - 1] === 0 ? (
             <div>
               No offers yet. Be the first one to Name Your Price
             </div>
-          }
+          ) : (
+            <div>
+              <strong>Best Offer Price</strong> {formatCurrency(prices[prices.length - 1])}
+            </div>
+          )}
         </div>
       </div>
     );

@@ -15,8 +15,8 @@
                 "zone_name": "Zone A",
                 "description": "Orchestra Center BB-EE, A-F, Front Mezz Right AA, Front Mezz Center A, Front Mezz Left AA",
                 "tevo_section_name": "Front Mezz Left AA",
-                "retail_price": 0,
-                "wholesale_price": 0,
+                "retail_price": 350,
+                "wholesale_price": 350,
                 "color": "#D95BA0"
             },
             {
@@ -25,8 +25,8 @@
                 "zone_name": "Zone A",
                 "description": "Orchestra Center BB-EE, A-F, Front Mezz Right AA, Front Mezz Center A, Front Mezz Left AA",
                 "tevo_section_name": "Front Mezz Right AA",
-                "retail_price": 0,
-                "wholesale_price": 0,
+                "retail_price": 300,
+                "wholesale_price": 300,
                 "color": "#D95BA0"
             },
             {
@@ -35,8 +35,8 @@
                 "zone_name": "Zone A",
                 "description": "Orchestra Center BB-EE, A-F, Front Mezz Right AA, Front Mezz Center A, Front Mezz Left AA",
                 "tevo_section_name": "Orchestra Center BB-EE, A-F",
-                "retail_price": 0,
-                "wholesale_price": 0,
+                "retail_price": 300,
+                "wholesale_price": 300,
                 "color": "#D95BA0"
             },
             {
