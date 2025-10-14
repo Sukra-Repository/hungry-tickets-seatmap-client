@@ -14,6 +14,7 @@ export interface Props {
 
 interface State {
   isOpen: boolean;
+  hovered: boolean;
 }
 
 const uniqueByZone = (groups: TicketGroup[]): TicketGroup[] => {
@@ -35,6 +36,7 @@ export default class Legend extends Component<Props, State> {
 
   state = {
     isOpen: this.props.openLegendInitially || false,
+    hovered: false,
   };
 
   containerStyle(): CSSProperties {
@@ -72,7 +74,7 @@ export default class Legend extends Component<Props, State> {
   }
 
   render() {
-    const { isOpen } = this.state;
+    const { isOpen, hovered } = this.state;
     const { ticketGroups, isMobile, showLegendOpenAlwaysForDesktop } = this.props;
 
     const filteredTicketGroups = uniqueByZone(ticketGroups);
@@ -97,12 +99,19 @@ export default class Legend extends Component<Props, State> {
     ) : (
       <div style={{ position: "relative" }}>
         <Button
-          onClick={() => this.setState({ isOpen: !isOpen })}
+          onClick={() => this.setState({ isOpen: !isOpen, hovered: true })}
           icon={isOpen ? <IconChevronUp /> : <IconChevronDown />}
           text={`${isOpen ? "Hide " : "Show "}Map Legend`}
           isMobile={isMobile}
         />
-        {filteredTicketGroups.length > 0 && isOpen && content}
+        <div
+          onMouseEnter={() => { this.setState({ hovered: true }) }}
+          onMouseLeave={() => { this.setState({ hovered: false, isOpen: false }) }}
+        >
+          {hovered && <>
+            {filteredTicketGroups.length > 0 && isOpen && content}
+          </>}
+        </div>
       </div>
     );
   }
