@@ -532,6 +532,21 @@ export class TicketMap extends Component<Props & DefaultProps, State> {
     this.setState({ dragging: true });
   };
 
+  onWheel = (e: React.WheelEvent<HTMLElement>) => {
+    if (this.state.isTouchDevice) return;
+    if (!this.props.mouseControlEnabled) return;
+    if (!this.zoom) return;
+    e.preventDefault();
+    const delta = e.deltaY;
+    const step = Math.min(0.5, Math.abs(delta) / 500);
+    console.log({ delta, step });
+    if (delta < 0) {
+      this.zoom.zoomIn(step);
+    } else {
+      this.zoom.zoomOut(step);
+    }
+  };
+
   getZoneNameFromSection(section: string): string {
     return this.state.manifest.sections[section]?.zone_name ?? '';
   }
@@ -674,6 +689,7 @@ export class TicketMap extends Component<Props & DefaultProps, State> {
         onTouchStart={this.onTouchStart}
         onTouchEnd={this.onTouchEnd}
         onTouchMove={this.onTouchMove}
+        onWheel={this.onWheel}
         style={{
           position: "relative",
           fontFamily: this.props.mapFontFamily,
