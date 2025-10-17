@@ -103,9 +103,10 @@ export default class Legend extends Component<Props, State> {
           icon={isOpen ? <IconChevronUp /> : <IconChevronDown />}
           text={`${isOpen ? "Hide " : "Show "}Map Legend`}
           isMobile={isMobile}
+          onMouseLeave={() => { this.setState({ hovered: false, isOpen: false }) }}
         />
         <div
-          onMouseEnter={() => { this.setState({ hovered: true }) }}
+          onMouseEnter={() => { this.setState({ hovered: true, isOpen: true }) }}
           onMouseLeave={() => { this.setState({ hovered: false, isOpen: false }) }}
         >
           {hovered && <>
