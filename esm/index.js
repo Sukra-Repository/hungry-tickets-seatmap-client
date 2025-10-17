@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 import React, { Component } from 'react';
 import isEqual from 'lodash.isequal';
 import fetchPonyfill from 'fetch-ponyfill';
-import { jsxs, jsx } from 'react/jsx-runtime';
+import { jsxs, jsx, Fragment } from 'react/jsx-runtime';
 import { createSelectorCreator, lruMemoize } from 'reselect';
 
 var __defProp = Object.defineProperty;
@@ -81,7 +81,8 @@ var _Legend = class _Legend extends Component {
   constructor() {
     super(...arguments);
     __publicField(this, "state", {
-      isOpen: this.props.openLegendInitially || false
+      isOpen: this.props.openLegendInitially || false,
+      hovered: false
     });
   }
   containerStyle() {
@@ -116,7 +117,7 @@ var _Legend = class _Legend extends Component {
     };
   }
   render() {
-    const { isOpen } = this.state;
+    const { isOpen, hovered } = this.state;
     const { ticketGroups, isMobile, showLegendOpenAlwaysForDesktop } = this.props;
     const filteredTicketGroups = uniqueByZone(ticketGroups);
     const content = /* @__PURE__ */ jsxs("div", { style: this.containerStyle(), children: [
@@ -133,13 +134,27 @@ var _Legend = class _Legend extends Component {
       /* @__PURE__ */ jsx(
         Button,
         {
-          onClick: () => this.setState({ isOpen: !isOpen }),
+          onClick: () => this.setState({ isOpen: !isOpen, hovered: true }),
           icon: isOpen ? /* @__PURE__ */ jsx(IconChevronUp, {}) : /* @__PURE__ */ jsx(IconChevronDown, {}),
           text: `${isOpen ? "Hide " : "Show "}Map Legend`,
-          isMobile
+          isMobile,
+          onMouseLeave: () => {
+            this.setState({ hovered: false, isOpen: false });
+          }
         }
       ),
-      filteredTicketGroups.length > 0 && isOpen && content
+      /* @__PURE__ */ jsx(
+        "div",
+        {
+          onMouseEnter: () => {
+            this.setState({ hovered: true, isOpen: true });
+          },
+          onMouseLeave: () => {
+            this.setState({ hovered: false, isOpen: false });
+          },
+          children: hovered && /* @__PURE__ */ jsx(Fragment, { children: filteredTicketGroups.length > 0 && isOpen && content })
+        }
+      )
     ] });
   }
 };
@@ -327,7 +342,7 @@ __publicField(_Actions, "defaultProps", {
 });
 var Actions = _Actions;
 var defaultDirection = ["up", "right"];
-var formatCurrency = new Intl.NumberFormat(void 0, {
+var formatCurrency = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD"
 }).format;
@@ -437,12 +452,11 @@ var _Tooltip = class _Tooltip extends Component {
             " \xA0 ",
             this.props.zone
           ] }),
-          prices[0] > 0 && /* @__PURE__ */ jsxs("div", { children: [
+          prices[prices.length - 1] === 0 ? /* @__PURE__ */ jsx("div", { children: "No offers yet. Be the first one to Name Your Price" }) : /* @__PURE__ */ jsxs("div", { children: [
             /* @__PURE__ */ jsx("strong", { children: "Best Offer Price" }),
-            " \xA0 ",
+            " ",
             formatCurrency(prices[prices.length - 1])
-          ] }),
-          prices[0] === 0 && /* @__PURE__ */ jsx("div", { children: "No offers yet. Be the first one to Name Your Price" })
+          ] })
         ] })
       }
     );
@@ -1123,6 +1137,20 @@ var _TicketMap = class _TicketMap extends Component {
     __publicField(this, "onTouchMove", /* @__PURE__ */ __name(() => {
       this.setState({ dragging: true });
     }, "onTouchMove"));
+    __publicField(this, "onWheel", /* @__PURE__ */ __name((e) => {
+      if (this.state.isTouchDevice) return;
+      if (!this.props.mouseControlEnabled) return;
+      if (!this.zoom) return;
+      e.preventDefault();
+      const delta = e.deltaY;
+      const step = Math.min(0.5, Math.abs(delta) / 500);
+      console.log({ delta, step });
+      if (delta < 0) {
+        this.zoom.zoomIn(step);
+      } else {
+        this.zoom.zoomOut(step);
+      }
+    }, "onWheel"));
     __publicField(this, "onTouchEnd", /* @__PURE__ */ __name((e) => {
       const section = this.state.currentHoveredSection;
       if (section) {
@@ -1450,6 +1478,7 @@ var _TicketMap = class _TicketMap extends Component {
         onTouchStart: this.onTouchStart,
         onTouchEnd: this.onTouchEnd,
         onTouchMove: this.onTouchMove,
+        onWheel: this.onWheel,
         style: {
           position: "relative",
           fontFamily: this.props.mapFontFamily,

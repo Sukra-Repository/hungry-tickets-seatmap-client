@@ -148,6 +148,7 @@ declare class TicketMap extends Component<Props & DefaultProps, State> {
     onClick: () => void;
     onTouchStart: (e: React$1.TouchEvent<HTMLElement>) => void;
     onTouchMove: () => void;
+    onWheel: (e: React$1.WheelEvent<HTMLElement>) => void;
     getZoneNameFromSection(section: string): string;
     onTouchEnd: (e: React$1.TouchEvent<HTMLElement>) => void;
     /**

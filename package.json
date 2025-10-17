@@ -1,7 +1,7 @@
 {
   "name": "@sukra-infotek/hungry-tickets-seatmap-client",
   "private": false,
-  "version": "1.0.8",
+  "version": "1.0.10",
   "publishConfig": {
     "access": "public"
   },

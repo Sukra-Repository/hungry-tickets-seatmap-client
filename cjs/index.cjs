@@ -91,7 +91,8 @@ var _Legend = class _Legend extends React.Component {
   constructor() {
     super(...arguments);
     __publicField(this, "state", {
-      isOpen: this.props.openLegendInitially || false
+      isOpen: this.props.openLegendInitially || false,
+      hovered: false
     });
   }
   containerStyle() {
@@ -126,7 +127,7 @@ var _Legend = class _Legend extends React.Component {
     };
   }
   render() {
-    const { isOpen } = this.state;
+    const { isOpen, hovered } = this.state;
     const { ticketGroups, isMobile, showLegendOpenAlwaysForDesktop } = this.props;
     const filteredTicketGroups = uniqueByZone(ticketGroups);
     const content = /* @__PURE__ */ jsxRuntime.jsxs("div", { style: this.containerStyle(), children: [
@@ -143,13 +144,27 @@ var _Legend = class _Legend extends React.Component {
       /* @__PURE__ */ jsxRuntime.jsx(
         Button,
         {
-          onClick: () => this.setState({ isOpen: !isOpen }),
+          onClick: () => this.setState({ isOpen: !isOpen, hovered: true }),
           icon: isOpen ? /* @__PURE__ */ jsxRuntime.jsx(IconChevronUp, {}) : /* @__PURE__ */ jsxRuntime.jsx(IconChevronDown, {}),
           text: `${isOpen ? "Hide " : "Show "}Map Legend`,
-          isMobile
+          isMobile,
+          onMouseLeave: () => {
+            this.setState({ hovered: false, isOpen: false });
+          }
         }
       ),
-      filteredTicketGroups.length > 0 && isOpen && content
+      /* @__PURE__ */ jsxRuntime.jsx(
+        "div",
+        {
+          onMouseEnter: () => {
+            this.setState({ hovered: true, isOpen: true });
+          },
+          onMouseLeave: () => {
+            this.setState({ hovered: false, isOpen: false });
+          },
+          children: hovered && /* @__PURE__ */ jsxRuntime.jsx(jsxRuntime.Fragment, { children: filteredTicketGroups.length > 0 && isOpen && content })
+        }
+      )
     ] });
   }
 };
@@ -337,7 +352,7 @@ __publicField(_Actions, "defaultProps", {
 });
 var Actions = _Actions;
 var defaultDirection = ["up", "right"];
-var formatCurrency = new Intl.NumberFormat(void 0, {
+var formatCurrency = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD"
 }).format;
@@ -447,12 +462,11 @@ var _Tooltip = class _Tooltip extends React.Component {
             " \xA0 ",
             this.props.zone
           ] }),
-          prices[0] > 0 && /* @__PURE__ */ jsxRuntime.jsxs("div", { children: [
+          prices[prices.length - 1] === 0 ? /* @__PURE__ */ jsxRuntime.jsx("div", { children: "No offers yet. Be the first one to Name Your Price" }) : /* @__PURE__ */ jsxRuntime.jsxs("div", { children: [
             /* @__PURE__ */ jsxRuntime.jsx("strong", { children: "Best Offer Price" }),
-            " \xA0 ",
+            " ",
             formatCurrency(prices[prices.length - 1])
-          ] }),
-          prices[0] === 0 && /* @__PURE__ */ jsxRuntime.jsx("div", { children: "No offers yet. Be the first one to Name Your Price" })
+          ] })
         ] })
       }
     );
@@ -1133,6 +1147,20 @@ var _TicketMap = class _TicketMap extends React.Component {
     __publicField(this, "onTouchMove", /* @__PURE__ */ __name(() => {
       this.setState({ dragging: true });
     }, "onTouchMove"));
+    __publicField(this, "onWheel", /* @__PURE__ */ __name((e) => {
+      if (this.state.isTouchDevice) return;
+      if (!this.props.mouseControlEnabled) return;
+      if (!this.zoom) return;
+      e.preventDefault();
+      const delta = e.deltaY;
+      const step = Math.min(0.5, Math.abs(delta) / 500);
+      console.log({ delta, step });
+      if (delta < 0) {
+        this.zoom.zoomIn(step);
+      } else {
+        this.zoom.zoomOut(step);
+      }
+    }, "onWheel"));
     __publicField(this, "onTouchEnd", /* @__PURE__ */ __name((e) => {
       const section = this.state.currentHoveredSection;
       if (section) {
@@ -1460,6 +1488,7 @@ var _TicketMap = class _TicketMap extends React.Component {
         onTouchStart: this.onTouchStart,
         onTouchEnd: this.onTouchEnd,
         onTouchMove: this.onTouchMove,
+        onWheel: this.onWheel,
         style: {
           position: "relative",
           fontFamily: this.props.mapFontFamily,
